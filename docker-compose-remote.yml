@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+    job-hunt-api:
+        build: .
+        container_name: job-hunt-api
+        restart: always
+        environment:
+            VIRTUAL_HOST: jha.mattcrn.at
+        ports:
+            - "5000"
+        volumes:
+            - './app:/app'
+        networks:
+            - docker-nginx-proxy_default
+networks:
+    docker-nginx-proxy_default:
+        external: true
